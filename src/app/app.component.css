@@ -1,0 +1,14 @@
+.file-upload input[type='file'] {
+  display: none;
+}
+.rounded-lg {
+  border-radius: 1rem;
+}
+
+.rounded-pill {
+  border-radius: 50rem;
+}
+
+.rounded-pill::after {
+  border-radius: 0 50rem 50rem 0;
+}
