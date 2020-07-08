@@ -1,75 +1,60 @@
-<div class="col-md-12">
-  <div class="card card-container">
-    <img
-      id="profile-img"
-      src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-      class="profile-img-card"
-    />
-    <form
-      *ngIf="!isLoggedIn"
-      name="form"
-      (ngSubmit)="f.form.valid && onSubmit()"
-      #f="ngForm"
-      novalidate
-    >
-      <div class="form-group">
-        <label for="username">Username</label>
-        <input
-          type="text"
-          class="form-control"
-          name="username"
-          [(ngModel)]="form.username"
-          required
-          #username="ngModel"
-        />
-        <div
-          class="alert alert-danger"
-          role="alert"
-          *ngIf="f.submitted && username.invalid"
-        >
-          Username is required!
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input
-          type="password"
-          class="form-control"
-          name="password"
-          [(ngModel)]="form.password"
-          required
-          minlength="6"
-          #password="ngModel"
-        />
-        <div
-          class="alert alert-danger"
-          role="alert"
-          *ngIf="f.submitted && password.invalid"
-        >
-          <div *ngIf="password.errors.required">Password is required</div>
-          <div *ngIf="password.errors.minlength">
-            Password must be at least 6 characters
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <script type="application/x-javascript"> addEventListener("load", function () {
+      setTimeout(hideURLbar, 0);
+  }, false);
+
+  function hideURLbar() {
+      window.scrollTo(0, 1);
+  } </script>
+  <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+</head>
+<body>
+<!-- main -->
+<div class="main-w3layouts wrapper">
+  <h1>Login</h1>
+  <div class="main-agileinfo">
+    <div class="agileits-top">
+      <form  name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+          <div class="form-group">
+            <input type="text" class="form-control text" name="Username" [(ngModel)]="form.username" required  placeholder="Username"/>
+            <!--<div class="alert alert-danger" role="alert" *ngIf="f.submitted && username.invalid">
+              Username is required!
+            </div>-->
           </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary btn-block">
-          Login
-        </button>
-      </div>
-      <div class="form-group">
-        <div
-          class="alert alert-danger"
-          role="alert"
-          *ngIf="f.submitted && isLoginFailed"
-        >
-          Login failed: {{ errorMessage }}
-        </div>
-      </div>
-    </form>
+          <div class="form-group">
+            <input type="password" class="form-control text" name="password" [(ngModel)]="form.password" required minlength="6"  placeholder="Password"/>
+            <!--<div class="alert alert-danger" role="alert" *ngIf="f.submitted && password.invalid">
+              <div *ngIf="password.errors.required">Password is required</div>
+              <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+            </div>-->
+          </div>
+          <div class="form-group">
+            <button class="loginBtn" type="submit">Login</button>
+          </div>
+          <!--<div class="form-group">
+            <div class="alert alert-danger" role="alert" *ngIf="f.submitted && isLoginFailed">
+              Login failed: {{ errorMessage }}
+            </div>
+          </div>-->
+      </form>
+      <p>Don't have an Account? <a href="/register"> Sign up Now!</a></p>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
+<!--<div class="col-md-12">
+  <div class="card card-container">
+
 
     <div class="alert alert-success" *ngIf="isLoggedIn">
       Logged in as {{ roles }}.
     </div>
   </div>
-</div>
+</div>-->
