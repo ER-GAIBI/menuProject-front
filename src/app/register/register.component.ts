@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import {Router} from "@angular/router";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class RegisterComponent implements OnInit {
   form: any = {};
@@ -13,9 +15,10 @@ export class RegisterComponent implements OnInit {
   isSignUpFailed = false;
   errorMessage = '';
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, public translate: TranslateService) { }
 
   ngOnInit() {
+    this.translate.use(sessionStorage.getItem('language'));
   }
 
   onSubmit() {

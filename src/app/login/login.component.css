@@ -124,7 +124,7 @@ h1 {
   color: #fff;
   font-weight: 100;
   text-transform: capitalize;
-  letter-spacing: 4px;
+  letter-spacing: 0px;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -190,22 +190,22 @@ input.email, input.text.w3lpass {
 }
 
 ::-webkit-input-placeholder {
-  color: #fff;
+  color: #fff !important;
   font-weight: 100;
 }
 
 :-moz-placeholder {
   /* Firefox 18- */
-  color: #fff;
+  color: #fff !important;
 }
 
 ::-moz-placeholder {
   /* Firefox 19+ */
-  color: #fff;
+  color: #fff !important;
 }
 
 :-ms-input-placeholder {
-  color: #fff;
+  color: #fff !important;
 }
 
 .loginBtn {
@@ -219,7 +219,7 @@ input.email, input.text.w3lpass {
   -webkit-appearance: none;
   width: 95%;
   margin: 2em 0;
-  letter-spacing: 4px;
+  letter-spacing: 0px;
 }
 
 .loginBtn :hover {

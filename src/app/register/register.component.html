@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html>
 <head>
   <title>Login</title>
@@ -13,15 +13,15 @@
   } </script>
   <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
 </head>
-<body>
+<body>-->
 <div class="main-w3layouts wrapper">
-  <h1>SIGN UP</h1>
+  <h1>{{'signUp' | translate}}</h1>
   <div class="main-agileinfo">
     <div class="agileits-top">
       <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
         <div class="form-group">
           <input type="text" class="form-control text" name="username"[(ngModel)]="form.username" required minlength="3"
-                 maxlength="20" placeholder="Username"/>
+                 maxlength="20" [placeholder]="'Username' | translate"/>
           <!--<div class="alert-danger" *ngIf="f.submitted && form.username.invalid">
             <div *ngIf="form.username.errors.required">Username is required</div>
             <div *ngIf="username.errors.minlength">Username must be at least 3 characters</div>
@@ -30,7 +30,7 @@
         </div>
         <div class="form-group">
           <input type="email" class="form-control text" name="email" [(ngModel)]="form.email" required email
-                 #email="ngModel" placeholder="Email"/>
+                 #email="ngModel" [placeholder]="'Email' | translate"/>
           <!--<div class="alert-danger" *ngIf="f.submitted && email.invalid">
             <div *ngIf="email.errors.required">Email is required</div>
             <div *ngIf="email.errors.email">
@@ -40,7 +40,7 @@
         </div>
         <div class="form-group">
           <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required
-                 minlength="6" #password="ngModel" placeholder="password"/>
+                 minlength="6" #password="ngModel" [placeholder]="'password' | translate"/>
           <!--<div class="alert-danger" *ngIf="f.submitted && password.invalid">
             <div *ngIf="password.errors.required">Password is required</div>
             <div *ngIf="password.errors.minlength">
@@ -50,7 +50,7 @@
         </div>
         <div class="form-group">
           <input type="password" class="form-control" name="Confirmpassword" [(ngModel)]="form.confirmPassword" required
-                 minlength="6" #password="ngModel" placeholder="Confirm password"/>
+                 minlength="6" #password="ngModel" [placeholder]="'confirmPassword' | translate"/>
           <!--<div class="alert-danger" *ngIf="f.submitted && password.invalid">
             <div *ngIf="password.errors.required">Password is required</div>
             <div *ngIf="password.errors.minlength">
@@ -60,7 +60,7 @@
         </div>
         <div class="form-group">
           <input type="text" class="form-control text" name="Company name" [(ngModel)]="form.companyName" required
-                 #companyName="ngModel" placeholder="Company name"/>
+                 #companyName="ngModel" [placeholder]="'companyName' | translate"/>
           <!--<div class="alert-danger" *ngIf="f.submitted && password.invalid">
             <div *ngIf="password.errors.required">Password is required</div>
             <div *ngIf="password.errors.minlength">
@@ -71,7 +71,7 @@
         <div class="form-group">
           <input type="text" class="form-control text" name="Commercial Registration No" [(ngModel)]="form.commercialNumber"
                  required
-                 #commercialNumber="ngModel" placeholder="Commercial Registration No"/>
+                 #commercialNumber="ngModel" [placeholder]="'commercialRegistrationNo' | translate"/>
           <!--<div class="alert-danger" *ngIf="f.submitted && password.invalid">
             <div *ngIf="password.errors.required">Password is required</div>
             <div *ngIf="password.errors.minlength">
@@ -80,7 +80,7 @@
           </div>-->
         </div>
         <div class="form-group">
-          <button class="loginBtn" type="submit">Sign Up</button>
+          <button class="loginBtn" type="submit">{{'signUp' | translate}}</button>
         </div>
 
         <!--<div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
@@ -94,6 +94,18 @@
     </div>
   </div>
 
+  <ul class="colorlib-bubbles">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
 </div>
-</body>
+<!--</body>-->
 

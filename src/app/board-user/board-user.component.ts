@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import { UserService } from '../_services/user.service';
 import {BoardUserService} from '../_services/board-user.service';
 
 @Component({
   selector: 'app-board-user',
   templateUrl: './board-user.component.html',
-  styleUrls: ['./board-user.component.css']
+  styleUrls: ['./board-user.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class BoardUserComponent implements OnInit {
   content = '';
@@ -23,6 +24,10 @@ export class BoardUserComponent implements OnInit {
         this.content = JSON.parse(err.error).message;
       }
     );
+  }
+
+  reloadPage() {
+    window.location.reload();
   }
 
   handleFileInput(file: FileList) {
