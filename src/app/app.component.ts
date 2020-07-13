@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TokenStorageService } from './_services/token-storage.service';
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,10 @@ export class AppComponent implements OnInit {
   showModeratorBoard = false;
   username: string;
 
-  constructor(private tokenStorageService: TokenStorageService) { }
+  constructor(private tokenStorageService: TokenStorageService, public translate: TranslateService) {
+    translate.addLangs(['english', 'العربية']);
+    translate.setDefaultLang('english');
+  }
 
   ngOnInit() {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
@@ -28,6 +32,13 @@ export class AppComponent implements OnInit {
       this.username = user.username;
     }
   }
+
+  switchLang(lang: string) {
+    this.translate.use(lang);
+    window.sessionStorage.removeItem('language');
+    window.sessionStorage.setItem('language', lang);
+  }
+
 
   logout() {
     this.tokenStorageService.signOut();

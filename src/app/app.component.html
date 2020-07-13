@@ -1,3 +1,17 @@
+<span class="form-inline">
+  <select
+    class="form-control"
+    #selectedLang
+    (change)="switchLang(selectedLang.value)">
+    <option *ngFor="let language of translate.getLangs()"
+            [value]="language"
+            [selected]="language === translate.currentLang">
+      {{ language }}
+    </option>
+  </select>
+</span>
+
+<!--
 <div id="app">
   <nav class="navbar navbar-expand navbar-dark bg-dark">
     <a href="#" class="navbar-brand">My Restaurant</a>
@@ -36,6 +50,8 @@
   </nav>
 
 
-  <router-outlet></router-outlet>
+  &lt;!&ndash;&ndash;&gt;
 
 </div>
+-->
+<router-outlet></router-outlet>
