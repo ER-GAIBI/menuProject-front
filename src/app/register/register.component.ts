@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import { AuthService } from '../_services/auth.service';
-import {Router} from "@angular/router";
-import {TranslateService} from "@ngx-translate/core";
+import {AuthService} from '../_services/auth.service';
+import {Router} from '@angular/router';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-register',
