@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { TokenStorageService } from './_services/token-storage.service';
-import {TranslateService} from "@ngx-translate/core";
+import {Component, OnInit} from '@angular/core';
+import {TokenStorageService} from './_services/token-storage.service';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
