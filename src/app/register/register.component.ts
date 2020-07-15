@@ -22,11 +22,15 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log('test1');
     if (this.form.password !== this.form.confirmPassword) {
       this.errorMessage = 'password are not identical';
     } else {
+      console.log('test2');
+      console.log(this.form);
       this.authService.register(this.form).subscribe(
         data => {
+          console.log('test2');
           console.log(data);
           this.isSuccessful = true;
           this.isSignUpFailed = false;
