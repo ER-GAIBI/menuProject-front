@@ -8,5 +8,17 @@
   "Email": "Email",
   "confirmPassword": "Confirm password",
   "companyName": "Company name",
-  "commercialRegistrationNo": "Commercial Registration No"
+  "commercialRegistrationNo": "Commercial Registration No",
+  "userNameIsRequired": "Username is required",
+  "emailIsRequired": "Email is required",
+  "emailIsNotValid": "Email is not valid",
+  "passwordIsRequired": "Password is required",
+  "passwordLenght": "Password must be at least 6 characters",
+  "passwordDoesNotMuch": "Password doesn't match",
+  "companyNameIsRequired": "Company name is required",
+  "commercialRegistrationIsRequired": "Commercial registration number is required",
+  "userNameIsAlreadyTaken": "Username is already taken",
+  "emailIsAlreadyInUse": "Email is already in use",
+  "registerCommercialNumberIsAlreadyInUse": "Register commercial number is already in use",
+  "confirmRegistrationMessage": "Please check your inbox to confirm your registration"
 }

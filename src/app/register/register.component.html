@@ -1,96 +1,68 @@
-<!--<!DOCTYPE html>
-<html>
-<head>
-  <title>Login</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <script type="application/x-javascript"> addEventListener("load", function () {
-      setTimeout(hideURLbar, 0);
-  }, false);
-
-  function hideURLbar() {
-      window.scrollTo(0, 1);
-  } </script>
-  <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
-</head>
-<body>-->
 <div class="main-w3layouts wrapper">
   <h1>{{'signUp' | translate}}</h1>
   <div class="main-agileinfo">
     <div class="agileits-top">
-      <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
         <div class="form-group">
-          <input type="text" class="form-control text" name="username"[(ngModel)]="form.username" required minlength="3"
-                 maxlength="20" [placeholder]="'Username' | translate"/>
-          <!--<div class="alert-danger" *ngIf="f.submitted && form.username.invalid">
-            <div *ngIf="form.username.errors.required">Username is required</div>
-            <div *ngIf="username.errors.minlength">Username must be at least 3 characters</div>
-            <div *ngIf="username.errors.maxlength">Username must be at most 20 characters</div>
-          </div>-->
-        </div>
-        <div class="form-group">
-          <input type="email" class="form-control text" name="email" [(ngModel)]="form.email" required email
-                 #email="ngModel" [placeholder]="'Email' | translate"/>
-          <!--<div class="alert-danger" *ngIf="f.submitted && email.invalid">
-            <div *ngIf="email.errors.required">Email is required</div>
-            <div *ngIf="email.errors.email">
-              Email must be a valid email address
-            </div>
-          </div>-->
-        </div>
-        <div class="form-group">
-          <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required
-                 minlength="6" #password="ngModel" [placeholder]="'password' | translate"/>
-          <!--<div class="alert-danger" *ngIf="f.submitted && password.invalid">
-            <div *ngIf="password.errors.required">Password is required</div>
-            <div *ngIf="password.errors.minlength">
-              Password must be at least 6 characters
-            </div>
-          </div>-->
-        </div>
-        <div class="form-group">
-          <input type="password" class="form-control" name="Confirmpassword" [(ngModel)]="form.confirmPassword" required
-                 minlength="6" #password="ngModel" [placeholder]="'confirmPassword' | translate"/>
-          <!--<div class="alert-danger" *ngIf="f.submitted && password.invalid">
-            <div *ngIf="password.errors.required">Password is required</div>
-            <div *ngIf="password.errors.minlength">
-              Password must be at least 6 characters
-            </div>
-          </div>-->
-        </div>
-        <div class="form-group">
-          <input type="text" class="form-control text" name="Company name" [(ngModel)]="form.companyName" required
-                 #companyName="ngModel" [placeholder]="'companyName' | translate"/>
-          <!--<div class="alert-danger" *ngIf="f.submitted && password.invalid">
-            <div *ngIf="password.errors.required">Password is required</div>
-            <div *ngIf="password.errors.minlength">
-              Password must be at least 6 characters
-            </div>
-          </div>-->
-        </div>
-        <div class="form-group">
-          <input type="text" class="form-control text" name="Commercial Registration No" [(ngModel)]="form.commercialNumber"
-                 required
-                 #commercialNumber="ngModel" [placeholder]="'commercialRegistrationNo' | translate"/>
-          <!--<div class="alert-danger" *ngIf="f.submitted && password.invalid">
-            <div *ngIf="password.errors.required">Password is required</div>
-            <div *ngIf="password.errors.minlength">
-              Password must be at least 6 characters
-            </div>
-          </div>-->
-        </div>
-        <div class="form-group">
-          <button class="loginBtn" type="submit">{{'signUp' | translate}}</button>
+          <input type="text" formControlName="username" class="form-control"  [ngClass]="{ 'is-invalid': submitted &&
+              f.username.errors }" [placeholder]="'Username' | translate"/>
+          <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+            <div *ngIf="f.username.errors.required">{{'userNameIsRequired' | translate}}</div>
+          </div>
         </div>
 
-        <!--<div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
-          Signup failed!<br />{{ errorMessage }}
-        </div>-->
+        <div class="form-group">
+          <input type="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted &&
+           f.email.errors }" [placeholder]="'Email' | translate"/>
+          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">{{'emailIsRequired' | translate}}</div>
+                <div *ngIf="f.email.errors.email">{{'emailIsNotValid' | translate}}</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted
+            && f.password.errors }" [placeholder]="'password' | translate"/>
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">{{'passwordIsRequired' | translate}}</div>
+                <div *ngIf="f.password.errors.minlength">{{'passwordLenght' | translate}}</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input type="password" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted
+            && f.confirmPassword.errors }" [placeholder]="'confirmPassword' | translate"/>
+          <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                <div *ngIf="f.confirmPassword.errors.required">{{'passwordIsRequired' | translate}}</div>
+                <div *ngIf="f.confirmPassword.errors.minlength">{{'passwordLenght' | translate}}</div>
+                <div *ngIf="f.confirmPassword.errors.confirmedValidator">{{'passwordDoesNotMuch' | translate}}</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input type="text" formControlName="companyName" class="form-control" [ngClass]="{ 'is-invalid': submitted
+            && f.companyName.errors }" [placeholder]="'companyName' | translate"/>
+          <div *ngIf="submitted && f.companyName.errors" class="invalid-feedback">
+                <div *ngIf="f.companyName.errors.required">{{'companyNameIsRequired' | translate}}</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input type="text" formControlName="commercialRegistrationNo" class="form-control" [ngClass]="{ 'is-invalid': submitted
+            && f.commercialRegistrationNo.errors }" [placeholder]="'commercialRegistrationNo' | translate"/>
+          <div *ngIf="submitted && f.commercialRegistrationNo.errors" class="invalid-feedback">
+                <div *ngIf="f.commercialRegistrationNo.errors.required">{{'commercialRegistrationIsRequired' | translate}}</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button class="loginBtn" type="submit">{{'signUp' | translate}}
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          </button>
+        </div>
+
       </form>
-
-      <div class="alert alert-success" *ngIf="isSuccessful">
-        Your registration is successful!
-      </div>
     </div>
   </div>
 
@@ -107,5 +79,4 @@
     <li></li>
   </ul>
 </div>
-<!--</body>-->
 
