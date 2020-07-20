@@ -20,5 +20,6 @@
   "userNameIsAlreadyTaken": "Username is already taken",
   "emailIsAlreadyInUse": "Email is already in use",
   "registerCommercialNumberIsAlreadyInUse": "Register commercial number is already in use",
-  "confirmRegistrationMessage": "Please check your inbox to confirm your registration"
+  "confirmRegistrationMessage": "Please check your inbox to confirm your registration",
+  "contactTheAdministrator": "Contact the administrator"
 }

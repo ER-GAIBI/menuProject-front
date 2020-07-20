@@ -21,5 +21,6 @@
   "userNameIsAlreadyTaken": "اسم المستخدم مستعمل",
   "emailIsAlreadyInUse": "البريد الإلكتروني قيد الاستخدام",
   "registerCommercialNumberIsAlreadyInUse": "تسجيل الرقم التجاري قيد الاستخدام بالفعل",
-  "confirmRegistrationMessage": "يرجى التحقق من بريدك الإلكتروني لتأكيد تسجيلك"
+  "confirmRegistrationMessage": "يرجى التحقق من بريدك الإلكتروني لتأكيد تسجيلك",
+  "contactTheAdministrator": "اتصل بالمسؤول للتوضيح"
 }

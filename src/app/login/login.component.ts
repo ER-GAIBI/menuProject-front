@@ -3,6 +3,8 @@ import {AuthService} from '../_services/auth.service';
 import {TokenStorageService} from '../_services/token-storage.service';
 import {Router} from "@angular/router";
 import {TranslateService} from "@ngx-translate/core";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-login',
@@ -11,37 +13,47 @@ import {TranslateService} from "@ngx-translate/core";
   encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit {
-  form: any = {};
   isLoggedIn = false;
-  isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
+  loginForm: FormGroup;
+  submitted = false;
 
   constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private router: Router,
-              public translate: TranslateService) { }
+              public translate: TranslateService, private formBuilder: FormBuilder,
+              private toastr: ToastrService) { }
 
   ngOnInit() {
     this.translate.use(sessionStorage.getItem('language'));
+    this.loginForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+    });
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
     }
   }
 
+  get f() { return this.loginForm.controls; }
+
   onSubmit() {
-    this.authService.login(this.form).subscribe(
+    this.submitted = true;
+    if (this.loginForm.invalid) {
+      return;
+    }
+    this.authService.login(this.loginForm.value).subscribe(
       data => {
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
 
-        this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
         this.router.navigateByUrl('/user');
       },
       err => {
-        this.errorMessage = err.error.message;
-        this.isLoginFailed = true;
+        this.toastr.error(this.translate.instant('contactTheAdministrator'));
+        // this.errorMessage = err.error.message;
       }
     );
   }
