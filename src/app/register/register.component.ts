@@ -1,7 +1,9 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {AuthService} from '../_services/auth.service';
-import {Router} from '@angular/router';
+import {NavigationEnd, Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-register',
@@ -10,37 +12,62 @@ import {TranslateService} from '@ngx-translate/core';
   encapsulation: ViewEncapsulation.None
 })
 export class RegisterComponent implements OnInit {
-  form: any = {};
-  isSuccessful = false;
-  isSignUpFailed = false;
   errorMessage = '';
+  registerForm: FormGroup;
+  loading = false;
+  submitted = false;
 
-  constructor(private authService: AuthService, private router: Router, public translate: TranslateService) { }
+  constructor(private authService: AuthService,
+              private router: Router,
+              public translate: TranslateService,
+              private formBuilder: FormBuilder,
+              private toastr: ToastrService
+              ) {}
 
   ngOnInit() {
     this.translate.use(sessionStorage.getItem('language'));
+    this.registerForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
+      companyName: ['', Validators.required],
+      commercialRegistrationNo: ['', Validators.required]
+    }, {validator: this.passwordConfirming('password', 'confirmPassword')});
+  }
+
+  get f() { return this.registerForm.controls; }
+
+  passwordConfirming(controlName: string, matchingControlName: string) {
+    return (formGroup: FormGroup) => {
+      const control = formGroup.controls[controlName];
+      const matchingControl = formGroup.controls[matchingControlName];
+      if (matchingControl.errors && !matchingControl.errors.confirmedValidator) {
+        return;
+      }
+      if (control.value !== matchingControl.value) {
+        matchingControl.setErrors({ confirmedValidator: true });
+      } else {
+        matchingControl.setErrors(null);
+      }
+    };
   }
 
   onSubmit() {
-    console.log('test1');
-    if (this.form.password !== this.form.confirmPassword) {
-      this.errorMessage = 'password are not identical';
-    } else {
-      console.log('test2');
-      console.log(this.form);
-      this.authService.register(this.form).subscribe(
+    this.submitted = true;
+    if (this.registerForm.invalid) {
+      return;
+    }
+    this.loading = true;
+    this.authService.register(this.registerForm.value).subscribe(
         data => {
-          console.log('test2');
-          console.log(data);
-          this.isSuccessful = true;
-          this.isSignUpFailed = false;
-          this.router.navigateByUrl("/login");
+          this.toastr.info(this.translate.instant('confirmRegistrationMessage'));
+          this.loading = false;
         },
         err => {
-          this.errorMessage = err.error.message;
-          this.isSignUpFailed = true;
+          this.toastr.error(this.translate.instant(err.error.message));
+          this.loading = false;
         }
       );
     }
-  }
 }

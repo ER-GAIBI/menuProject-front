@@ -1,4 +1,5 @@
 {
+  "currentTheme":"Scheherazade",
   "Username": "اسم المستخدم",
   "password": "كلمة السر",
   "login": "تسجيل الدخول",
@@ -8,5 +9,18 @@
   "Email": "البريد الإلكتروني",
   "confirmPassword": "تأكيد كلمة المرور",
   "companyName": "اسم الشركة",
-  "commercialRegistrationNo": "رقم السجل التجاري"
+  "commercialRegistrationNo": "رقم السجل التجاري",
+  "userNameIsRequired": "اسم المستخدم مطلوب",
+  "emailIsRequired": "البريد الإلكتروني مطلوب",
+  "emailIsNotValid": "البريد الإلكتروني غير صالح",
+  "passwordIsRequired": "كلمة المرور مطلوبة",
+  "passwordLenght": "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل",
+  "passwordDoesNotMuch": "كلمة المرور غير متطابقة",
+  "companyNameIsRequired": "اسم الشركة مطلوب",
+  "commercialRegistrationIsRequired": "رقم التسجيل التجاري مطلوب",
+  "userNameIsAlreadyTaken": "اسم المستخدم مستعمل",
+  "emailIsAlreadyInUse": "البريد الإلكتروني قيد الاستخدام",
+  "registerCommercialNumberIsAlreadyInUse": "تسجيل الرقم التجاري قيد الاستخدام بالفعل",
+  "confirmRegistrationMessage": "يرجى التحقق من بريدك الإلكتروني لتأكيد تسجيلك",
+  "contactTheAdministrator": "اتصل بالمسؤول للتوضيح"
 }

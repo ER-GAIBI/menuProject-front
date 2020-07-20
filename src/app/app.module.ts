@@ -2,7 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 import {AppComponent} from './app.component';
@@ -17,6 +17,9 @@ import {ProfileComponent} from './profile/profile.component';
 import {authInterceptorProviders} from './_helpers/auth.interceptor';
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ToastrModule} from "ngx-toastr";
+import { SuccessConfirmationComponent } from './success-confirmation/success-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -27,20 +30,24 @@ import {TranslateHttpLoader} from "@ngx-translate/http-loader";
     BoardAdminComponent,
     BoardUserComponent,
     BoardModeratorComponent,
-    ProfileComponent
+    ProfileComponent,
+    SuccessConfirmationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: httpTranslateLoader,
         deps: [HttpClient]
       }
-    })
+    }),
+    ReactiveFormsModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

@@ -28,7 +28,11 @@ export class AuthService {
       email: user.email,
       password: user.password,
       companyName: user.companyName,
-      commercialNumber: user.commercialNumber,
+      commercialRegistrationNo: user.commercialRegistrationNo,
     }, httpOptions);
+  }
+
+  confirmRegister(token: string): Observable<any> {
+    return this.http.get(AUTH_API + 'regitrationConfirm?token=' + token, { responseType: 'text' });
   }
 }
