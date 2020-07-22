@@ -61,7 +61,8 @@ export class RegisterComponent implements OnInit {
     this.loading = true;
     this.authService.register(this.registerForm.value).subscribe(
         data => {
-          this.toastr.info(this.translate.instant('confirmRegistrationMessage'));
+          this.router.navigateByUrl('/login');
+          //this.toastr.info(this.translate.instant('confirmRegistrationMessage'));
           this.loading = false;
         },
         err => {
