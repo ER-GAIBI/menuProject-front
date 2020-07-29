@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
 
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
-        this.router.navigateByUrl('/user');
+        this.router.navigateByUrl('/listOfCodes');
       },
       err => {
         this.toastr.error(this.translate.instant('contactTheAdministrator'));

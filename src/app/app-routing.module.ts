@@ -9,6 +9,7 @@ import { BoardUserComponent } from './board-user/board-user.component';
 import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
 import {SuccessConfirmationComponent} from './success-confirmation/success-confirmation.component';
+import {ListOfCodesComponent} from './list-of-codes/list-of-codes.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'mod', component: BoardModeratorComponent },
   { path: 'admin', component: BoardAdminComponent },
   { path: 'successRegistration', component: SuccessConfirmationComponent },
+  { path: 'listOfCodes', component: ListOfCodesComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];
 

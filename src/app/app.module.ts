@@ -20,6 +20,7 @@ import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
 import { SuccessConfirmationComponent } from './success-confirmation/success-confirmation.component';
+import { ListOfCodesComponent } from './list-of-codes/list-of-codes.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { SuccessConfirmationComponent } from './success-confirmation/success-con
     BoardUserComponent,
     BoardModeratorComponent,
     ProfileComponent,
-    SuccessConfirmationComponent
+    SuccessConfirmationComponent,
+    ListOfCodesComponent
   ],
   imports: [
     BrowserModule,

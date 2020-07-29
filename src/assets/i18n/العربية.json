@@ -22,5 +22,19 @@
   "emailIsAlreadyInUse": "البريد الإلكتروني قيد الاستخدام",
   "registerCommercialNumberIsAlreadyInUse": "تسجيل الرقم التجاري قيد الاستخدام بالفعل",
   "confirmRegistrationMessage": "يرجى التحقق من بريدك الإلكتروني لتأكيد تسجيلك",
-  "contactTheAdministrator": "اتصل بالمسؤول للتوضيح"
+  "contactTheAdministrator": "اتصل بالمسؤول للتوضيح",
+  "Name": "الاسم",
+  "file": "تصفح",
+  "nameIsRequired": "الاسم مطلوب",
+  "create": "انشاء",
+  "uploadFile": "يرجى تحميل الملف",
+  "edit": "تعديل",
+  "added": "اضيف بنجاح",
+  "edited": "تم تحريرها بنجاح",
+  "newCode": "رمز جديد",
+  "generalStatistics": "الإحصاءات العامة",
+  "scan": "وقت الفحص :",
+  "avg": "متوسط الوقت : ",
+  "delete": "حذف",
+  "fileDeleted": "تم حذف الملف"
 }

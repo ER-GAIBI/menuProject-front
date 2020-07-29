@@ -21,5 +21,19 @@
   "emailIsAlreadyInUse": "Email is already in use",
   "registerCommercialNumberIsAlreadyInUse": "Register commercial number is already in use",
   "confirmRegistrationMessage": "Please check your inbox to confirm your registration",
-  "contactTheAdministrator": "Contact the administrator"
+  "contactTheAdministrator": "Contact the administrator",
+  "Name": "Name",
+  "file": "Browse",
+  "nameIsRequired": "Name is required",
+  "create": "Create",
+  "uploadFile": "Please upload file",
+  "edit": "Edit",
+  "added": "Added successfully",
+  "edited": "Edited successfully",
+  "newCode": "New code",
+  "generalStatistics": "General statistics",
+  "scan": "Scan Time : ",
+  "avg": "AVG time : ",
+  "delete": "Delete",
+  "fileDeleted": "File deleted"
 }

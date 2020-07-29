@@ -1,20 +1,38 @@
-<nav class="navbar navbar-light bg-light nav-fill w-100">
+<div class="agileits-top main-agileinfo">
+  <form  name="form" [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
 
-  <div class="d-flex justify-content-center mx-auto">
-    <div class="btn btn-mdb-color btn-rounded float-left">
-      <input type="file" (change)="handleFileInput($event.target.files)" multiple>
+    <div class="form-group">
+      <input type="text" [(ngModel)]="name" formControlName="name" class="form-control"  [ngClass]="{ 'is-invalid': submitted &&
+              f.name.errors }" [placeholder]="'Name' | translate"/>
+      <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+        <div *ngIf="f.name.errors.required">{{'nameIsRequired' | translate}}</div>
+      </div>
     </div>
-    <button type="button"  class="btn btn-secondary">Statistics</button>
-  </div>
-</nav>
 
+    <div class="form-group">
+      <label class="btn btn-default browseBtn">
+        {{'file' | translate}}
+        <input type="file" formControlName="uploadFile" class="form-control" (change)="handleFileInput($event.target.files)"
+               multiple [ngClass]="{ 'is-invalid': submitted && f.uploadFile.errors }" hidden>
+      </label>
+    </div>
 
+    <div *ngIf="qrCodeEdit" class="row center">
+      <img [src]="'data:image/jpeg;base64,' + code.file">
+    </div>
 
+    <div *ngIf="isUploaded">
+      <div *ngFor="let name of filesName">{{'-' + name}}</div>
+    </div>
 
-<!--
-<div class="container">
-  <header class="jumbotron">
-    <p>{{ content }}</p>
-  </header>
+    <div class="form-group">
+      <button *ngIf="!qrCodeEdit" class="loginBtn" type="submit">{{'create' | translate}}</button>
+      <button *ngIf="qrCodeEdit" class="loginBtn" type="submit">{{'edit' | translate}}</button>
+    </div>
+  </form>
 </div>
--->
+
+
+
+
+
