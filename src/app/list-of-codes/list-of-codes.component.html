@@ -13,7 +13,7 @@
   <div class="row border border-success" style="padding: 1%">
     <div class="col-sm-6">
       <div class="row">
-        <label>{{'Name'  | translate}} {{code.qrCode.name}}</label>
+        <label>{{'fileName'  | translate}} {{code.qrCode.name}}</label>
       </div>
       <div class="row">
         <label>{{'scan'  | translate}}</label>
@@ -27,6 +27,7 @@
         <img [src]="'data:image/jpeg;base64,' + code.file">
       </div>
       <div class="row">
+        <button type="button" class="btn btn-link text-light" (click)="open(mymodal, code)">{{'open'  | translate}}</button>
         <button type="button" class="btn btn-link text-primary" (click)="edit(code)">{{'edit'  | translate}}</button>
         <button type="button" (click)="delete(code)" class="btn btn-link text-danger">{{'delete'  | translate}}</button>
       </div>
@@ -35,3 +36,19 @@
   </div>
   <br>
 </div>
+
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Menu</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <img [src]="'data:image/jpeg;base64,' + displayCode.fileToDispaly">
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+  </div>
+</ng-template>
+

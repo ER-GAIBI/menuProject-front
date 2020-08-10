@@ -33,7 +33,9 @@
   "newCode": "New code",
   "generalStatistics": "General statistics",
   "scan": "Scan Time : ",
+  "fileName": "Name : ",
   "avg": "AVG time : ",
   "delete": "Delete",
-  "fileDeleted": "File deleted"
+  "fileDeleted": "File deleted",
+  "open": "Open"
 }

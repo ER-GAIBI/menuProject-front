@@ -21,6 +21,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
 import { SuccessConfirmationComponent } from './success-confirmation/success-confirmation.component';
 import { ListOfCodesComponent } from './list-of-codes/list-of-codes.component';
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { ListOfCodesComponent } from './list-of-codes/list-of-codes.component';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    NgbModule,
     ToastrModule.forRoot(),
     TranslateModule.forRoot({
       loader: {

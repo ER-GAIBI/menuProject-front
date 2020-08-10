@@ -33,8 +33,10 @@
   "edited": "تم تحريرها بنجاح",
   "newCode": "رمز جديد",
   "generalStatistics": "الإحصاءات العامة",
-  "scan": "وقت الفحص :",
+  "scan": "وقت الفحص : ",
+  "fileName": "الاسم : ",
   "avg": "متوسط الوقت : ",
   "delete": "حذف",
-  "fileDeleted": "تم حذف الملف"
+  "fileDeleted": "تم حذف الملف",
+  "open": "افتح"
 }

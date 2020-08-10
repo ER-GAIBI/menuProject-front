@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {TranslateService} from "@ngx-translate/core";
 import {ListOfCodesService} from "../_services/list-of-codes.service";
 import {ToastrService} from "ngx-toastr";
+import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-list-of-codes',
@@ -13,10 +14,13 @@ import {ToastrService} from "ngx-toastr";
 export class ListOfCodesComponent implements OnInit {
 
   codes = [];
+  displayCode: any;
+  closeResult: string;
 
   constructor(private router: Router, public translate: TranslateService,
               private listOfCodesService: ListOfCodesService,
-              private toastr: ToastrService) { }
+              private toastr: ToastrService,
+              private modalService: NgbModal) { }
 
   ngOnInit() {
     this.translate.use(sessionStorage.getItem('language'));
@@ -44,5 +48,22 @@ export class ListOfCodesComponent implements OnInit {
     this.router.navigate(['/user', {id: code.qrCode.id}]);
   }
 
+  open(modal: any, code: any) {
+    this.displayCode = code;
+    this.modalService.open(modal, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
 
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
 }
