@@ -1,15 +1,41 @@
+<h2 class="text-center my-3">Dashboard </h2>
 <div class="container">
   <div class="row">
     <div class="col-sm">
-      <button type="button" class="btn btn-success browseBtn" (click)="goToUserPage()">{{'newCode' | translate}}</button>
+      <button type="button" class="btn btn-primary browseBtn"
+              (click)="goToUserPage()">{{'newCode' | translate}}</button>
     </div>
     <div class="col-sm">
-      <button type="button" class="btn btn-success browseBtn">{{'generalStatistics' | translate}}</button>
+      <button type="button" class="btn btn-primary browseBtn">{{'generalStatistics' | translate}}</button>
+    </div>
+  </div>
+  <div class="row  mt-3">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">QR</div>
+        <div class="card-body">
+          <h5 class="card-title" style="font-weight: bold">You can manage your codes here </h5>
+          <div class="row">
+            <div class="card col-auto" style="width: 18rem; margin: 10px" *ngFor="let code of codes">
+              <img class="card-img-top" [src]="'data:image/jpeg;base64,' + code.file">
+              <div class="card-body">
+                <h5 class="card-title">Name of QR : {{code.qrCode.name}}</h5>
+                <p class="card-text"> Snan time : </p>
+                <p class="card-text"> AVG time : </p>
+                <button type="button" class="btn btn-info btnMargin1" (click)="open(mymodal, code)">Open</button>
+                <button type="button" class="btn btn-warning btnMargin1" (click)="edit(code)">Edit</button>
+                <button type="button" class="btn btn-danger" (click)="delete(code)">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="rounded container-fluid w-75" *ngFor="let code of codes">
+
+<!--<div class="rounded container-fluid w-75" *ngFor="let code of codes">
   <div class="row border border-success" style="padding: 1%">
     <div class="col-sm-6">
       <div class="row">
@@ -35,7 +61,7 @@
 
   </div>
   <br>
-</div>
+</div>-->
 
 <ng-template #mymodal let-modal>
   <div class="modal-header">
@@ -45,7 +71,7 @@
     </button>
   </div>
   <div class="modal-body">
-    <img [src]="'data:image/jpeg;base64,' + displayCode.fileToDispaly">
+    <img class="img-fluid" [src]="'data:image/jpeg;base64,' + displayCode.fileToDispaly">
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>

@@ -9,7 +9,7 @@ import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
   selector: 'app-list-of-codes',
   templateUrl: './list-of-codes.component.html',
   styleUrls: ['./list-of-codes.component.css'],
-  encapsulation: ViewEncapsulation.None
+  /*encapsulation: ViewEncapsulation.None*/
 })
 export class ListOfCodesComponent implements OnInit {
 

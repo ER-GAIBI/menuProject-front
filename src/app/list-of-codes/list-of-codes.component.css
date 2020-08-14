@@ -1,6 +1,7 @@
+/*
 body {
   background: #76b852;
-  /* fallback for old browsers */
+  !* fallback for old browsers *!
   background: -webkit-linear-gradient(to top, #76b852, #8DC26F);
   background: -moz-linear-gradient(to top, #76b852, #8DC26F);
   background: -o-linear-gradient(to top, #76b852, #8DC26F);
@@ -10,16 +11,21 @@ body {
   font-family: 'Roboto', sans-serif;
   min-height: 100%;
 }
+*/
+
 
 .browseBtn {
   font-size: .9em;
   color: #fff;
   outline: none;
-  border: 1px solid #76b852;
   cursor: pointer;
   padding: 0.5em;
   -webkit-appearance: none;
   width: 95%;
   margin: 2em 0;
   letter-spacing: 0px;
+}
+
+.btnMargin1 {
+  margin-right: 5px;
 }

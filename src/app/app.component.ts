@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TokenStorageService} from './_services/token-storage.service';
 import {TranslateService} from '@ngx-translate/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -14,8 +15,10 @@ export class AppComponent implements OnInit {
   showModeratorBoard = false;
   username: string;
 
-  constructor(private tokenStorageService: TokenStorageService, public translate: TranslateService) {
-    translate.addLangs(['english', 'العربية']);
+  constructor(private tokenStorageService: TokenStorageService,
+              public translate: TranslateService,
+              private router: Router) {
+    translate.addLangs(['english', 'عربي']);
     translate.setDefaultLang('english');
   }
 
@@ -42,6 +45,16 @@ export class AppComponent implements OnInit {
 
   logout() {
     this.tokenStorageService.signOut();
-    window.location.reload();
+    this.router.navigateByUrl('/login');
+    /*window.location.reload();*/
+  }
+
+  goToCodes() {
+    console.log(this.tokenStorageService.getToken());
+    if (this.tokenStorageService.getToken() == null) {
+      this.router.navigateByUrl('/login');
+    } else {
+      this.router.navigateByUrl('/listOfCodes');
+    }
   }
 }

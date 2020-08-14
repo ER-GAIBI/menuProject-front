@@ -1,4 +1,66 @@
-<div class="agileits-top main-agileinfo">
+<h2 class="text-center my-3"> New QR  </h2>
+<div class="container mt-3">
+  <!--Row with two equal columns-->
+  <div class="row">
+    <!--Row with two columns divided in 1:3 ratio-->
+  </div>
+  <div class="row  mt-3">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">QR</div>
+        <div class="card-body">
+          <h5 class="card-title" *ngIf="!qrCodeEdit">Create new QR </h5>
+          <h5 class="card-title" *ngIf="qrCodeEdit">Edit QR </h5>
+
+          <form  name="form" [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
+
+            <div class="form-group">
+              <input type="text" [(ngModel)]="name" formControlName="name" class="form-control"  [ngClass]="{ 'is-invalid': submitted &&
+              f.name.errors }" [placeholder]="'Name' | translate"/>
+              <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                <div *ngIf="f.name.errors.required">{{'nameIsRequired' | translate}}</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              {{'file' | translate}} :
+              <label>
+                <input type="file" formControlName="uploadFile"  (change)="handleFileInput($event.target.files)"
+                       multiple [ngClass]="{ 'is-invalid': submitted && f.uploadFile.errors }">
+              </label>
+            </div>
+
+            <div *ngIf="qrCodeEdit" class="row center">
+              <img [src]="'data:image/jpeg;base64,' + code.file">
+            </div>
+
+            <!--<div *ngIf="isUploaded">
+              <div *ngFor="let name of filesName">{{'-' + name}}</div>
+            </div>-->
+
+            <div class="form-group">
+              <button *ngIf="!qrCodeEdit" class="btn btn-primary" type="submit">{{'create' | translate}}</button>
+              <button *ngIf="qrCodeEdit" class="btn btn-primary" type="submit">{{'edit' | translate}}</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!--Row with two columns divided in 1:3 ratio-->
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!--<div class="agileits-top main-agileinfo">
   <form  name="form" [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
 
     <div class="form-group">
@@ -26,11 +88,11 @@
     </div>
 
     <div class="form-group">
-      <button *ngIf="!qrCodeEdit" class="loginBtn" type="submit">{{'create' | translate}}</button>
-      <button *ngIf="qrCodeEdit" class="loginBtn" type="submit">{{'edit' | translate}}</button>
+      <button *ngIf="!qrCodeEdit" class="btn btn-primary" type="submit">{{'create' | translate}}</button>
+      <button *ngIf="qrCodeEdit" class="btn btn-primary" type="submit">{{'edit' | translate}}</button>
     </div>
   </form>
-</div>
+</div>-->
 
 
 

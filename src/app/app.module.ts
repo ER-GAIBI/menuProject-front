@@ -22,6 +22,7 @@ import {ToastrModule} from "ngx-toastr";
 import { SuccessConfirmationComponent } from './success-confirmation/success-confirmation.component';
 import { ListOfCodesComponent } from './list-of-codes/list-of-codes.component';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import { GetCodeComponent } from './get-code/get-code.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
     BoardModeratorComponent,
     ProfileComponent,
     SuccessConfirmationComponent,
-    ListOfCodesComponent
+    ListOfCodesComponent,
+    GetCodeComponent
   ],
   imports: [
     BrowserModule,

@@ -10,7 +10,7 @@ import {ActivatedRoute, Router} from "@angular/router";
   selector: 'app-board-user',
   templateUrl: './board-user.component.html',
   styleUrls: ['./board-user.component.css'],
-  encapsulation: ViewEncapsulation.None
+  /*encapsulation: ViewEncapsulation.None*/
 })
 export class BoardUserComponent implements OnInit {
   content = '';

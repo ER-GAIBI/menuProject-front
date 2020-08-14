@@ -1,4 +1,4 @@
-<div class="main-w3layouts wrapper">
+<!--<div class="main-w3layouts wrapper">
   <h1>{{'login' | translate}}</h1>
   <div class="main-agileinfo">
     <div class="agileits-top">
@@ -40,4 +40,45 @@
     <li></li>
     <li></li>
   </ul>
+</div>-->
+
+<div class="limiter">
+  <div class="container-login100">
+    <div class="login100-more" style="background-image: url('../../assets/bg-01.png');"></div>
+
+    <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
+      <form class="login100-form validate-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+					<span class="login100-form-title p-b-59">
+						Login
+					</span>
+
+        <div class="wrap-input100 validate-input form-group">
+          <span class="label-input100">Username</span>
+          <input class="input100" type="text" name="name" placeholder="Name..." formControlName="username"
+                 [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+          <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+            <div *ngIf="f.username.errors.required">{{'userNameIsRequired' | translate}}</div>
+          </div>
+        </div>
+
+        <div class="wrap-input100 validate-input">
+          <span class="label-input100">Password</span>
+          <input class="input100" type="password" formControlName="password" name="pass" placeholder="*************"
+                 [ngClass]="{ 'is-invalid': submitted
+            && f.password.errors }">
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">{{'passwordIsRequired' | translate}}</div>
+          </div>
+        </div>
+
+        <div class="container-login100-form-btn">
+          <div class="wrap-login100-form-btn">
+            <div class="login100-form-bgbtn"></div>
+            <button class="login100-form-btn" type="submit">Login</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
+
