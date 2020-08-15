@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TokenStorageService} from './_services/token-storage.service';
 import {TranslateService} from '@ngx-translate/core';
-import {Router} from "@angular/router";
+import {NavigationStart, Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -14,12 +14,18 @@ export class AppComponent implements OnInit {
   showAdminBoard = false;
   showModeratorBoard = false;
   username: string;
+  showMenu: any
 
   constructor(private tokenStorageService: TokenStorageService,
               public translate: TranslateService,
               private router: Router) {
     translate.addLangs(['english', 'عربي']);
     translate.setDefaultLang('english');
+    router.events.forEach((event) => {
+      if (event instanceof NavigationStart) {
+        this.showMenu = event.url.includes('/getCode?id');
+      }
+    });
   }
 
   ngOnInit() {
