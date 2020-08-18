@@ -1,5 +1,78 @@
 <div class="container">
-  <header class="jumbotron">
-    <p>{{ content }}</p>
-  </header>
+  <div class="row">
+    <div class="col-sm">
+      <button type="button" class="btn btn-primary browseBtn" (click)="manageAccount()" *ngIf="!manage">{{'manageAccount' | translate}}</button>
+      <button type="button" class="btn btn-primary browseBtn" (click)="main()" *ngIf="manage">{{'main' | translate}}</button>
+    </div>
+  </div>
+  <div *ngIf="!manage">
+     <div class="row  mt-3">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">QR</div>
+          <select class="selectpicker" #mySelect (change)='onOptionsSelected(mySelect.value)'>
+            <option class="option" [value]="0">All</option>
+            <option class="option" *ngFor="let user of users" [value]="user.id">{{user.email}}</option>
+          </select>
+          <div class="card-body">
+            <div class="row">
+              <div class="card col-auto" style="width: 18rem; margin: 10px" *ngFor="let code of codes">
+                <img class="card-img-top" [src]="'data:image/jpeg;base64,' + code.file">
+                <div class="card-body">
+                  <h5 class="card-title">{{'fileName'  | translate}}  {{code.qrCode.name}}</h5>
+                  <p class="card-text"> {{'scan'  | translate}} {{code.qrCode.scannedTime}}</p>
+                  <p class="card-text"> {{'avg'  | translate}} {{averageTime(code)}} {{'min'  | translate}}</p>
+                  <p class="card-text"> {{'best'  | translate}}
+                    <span *ngFor="let day of best10Days(code); let i=index"><br>
+                      <span *ngIf="i<10">
+                      - {{day[0]}} : 00
+                    </span>
+                  </span>
+                  </p>
+                  <p class="card-text"> {{'lessThan1Min'  | translate}} {{lessThan1Min(code)}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row  mt-3" *ngIf="manage">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">{{'accountInfo' | translate}}</div>
+        <div class="card-body">
+          <div class="row table-responsive">
+              <table class="table">
+                <thead>
+                <tr>
+                  <th>{{'Name' | translate}}</th>
+                  <th>{{'phone' | translate}}</th>
+                  <th>{{'creationDate' | translate}}</th>
+                  <th>{{'commercialRegistrationNo' | translate}}</th>
+                  <th>{{'Email' | translate}}</th>
+                  <th>{{'actions' | translate}}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let user of users">
+                  <td>{{user.username}}</td>
+                  <td>{{user.phone}}</td>
+                  <td>{{user.creationDate | date}}</td>
+                  <td>{{user.commercialRegistrationNo}}</td>
+                  <td>{{user.email}}</td>
+                  <td>
+                    <button *ngIf="user.enabled" type="button" class="btn btn-danger btnMargin1" (click)="lock(user)">{{'disable'  | translate}}</button>
+                    <button *ngIf="!user.enabled" type="button" class="btn btn-success btnMargin1" (click)="open(user)">{{'enable'  | translate}}</button>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+

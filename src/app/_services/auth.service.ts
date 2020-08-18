@@ -29,6 +29,7 @@ export class AuthService {
       password: user.password,
       companyName: user.companyName,
       commercialRegistrationNo: user.commercialRegistrationNo,
+      phone: user.phone,
     }, httpOptions);
   }
 

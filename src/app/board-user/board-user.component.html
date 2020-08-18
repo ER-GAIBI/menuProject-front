@@ -1,4 +1,4 @@
-<h2 class="text-center my-3"> New QR  </h2>
+<h2 class="text-center my-3"> {{'newQr' | translate}}</h2>
 <div class="container mt-3">
   <!--Row with two equal columns-->
   <div class="row">
@@ -9,8 +9,8 @@
       <div class="card">
         <div class="card-header">QR</div>
         <div class="card-body">
-          <h5 class="card-title" *ngIf="!qrCodeEdit">Create new QR </h5>
-          <h5 class="card-title" *ngIf="qrCodeEdit">Edit QR </h5>
+          <h5 class="card-title" *ngIf="!qrCodeEdit">{{'createNewQr' | translate}}</h5>
+          <h5 class="card-title" *ngIf="qrCodeEdit">{{'editNewQr' | translate}}</h5>
 
           <form  name="form" [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
 

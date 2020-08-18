@@ -49,7 +49,11 @@ export class LoginComponent implements OnInit {
 
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
-        this.router.navigateByUrl('/listOfCodes');
+        if (this.roles[0] === 'ROLE_USER') {
+          this.router.navigateByUrl('/listOfCodes');
+        } else if (this.roles[0] === 'ROLE_ADMIN') {
+          this.router.navigateByUrl('/admin');
+        }
       },
       err => {
         this.toastr.error(this.translate.instant('contactTheAdministrator'));

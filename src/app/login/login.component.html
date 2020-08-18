@@ -49,12 +49,12 @@
     <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
       <form class="login100-form validate-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 					<span class="login100-form-title p-b-59">
-						Login
+						{{'login' | translate}}
 					</span>
 
         <div class="wrap-input100 validate-input form-group">
-          <span class="label-input100">Username</span>
-          <input class="input100" type="text" name="name" placeholder="Name..." formControlName="username"
+          <span class="label-input100">{{'Username' | translate}}</span>
+          <input class="input100" type="text" name="name" [placeholder]="'Username' | translate" formControlName="username"
                  [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
           <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
             <div *ngIf="f.username.errors.required">{{'userNameIsRequired' | translate}}</div>
@@ -62,7 +62,7 @@
         </div>
 
         <div class="wrap-input100 validate-input">
-          <span class="label-input100">Password</span>
+          <span class="label-input100">{{'password' | translate}}</span>
           <input class="input100" type="password" formControlName="password" name="pass" placeholder="*************"
                  [ngClass]="{ 'is-invalid': submitted
             && f.password.errors }">
@@ -74,7 +74,7 @@
         <div class="container-login100-form-btn">
           <div class="wrap-login100-form-btn">
             <div class="login100-form-bgbtn"></div>
-            <button class="login100-form-btn" type="submit">Login</button>
+            <button class="login100-form-btn" type="submit">{{'login' | translate}}</button>
           </div>
         </div>
       </form>

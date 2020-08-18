@@ -32,4 +32,20 @@ export class BoardUserService {
     return this.http.get(API_URL + '/getCode?id=' + id);
   }
 
+  getCodeForScan(id: string) {
+    return this.http.get(API_URL + '/getCodeForScan?id=' + id);
+  }
+
+  setViewedTime(qrCodeId: string, time: any, viewerId: string) {
+    const formData: FormData = new FormData();
+    formData.append('time', time);
+    formData.append('id', viewerId);
+    formData.append('qrCodeId', qrCodeId);
+    return this.http.post(API_URL + '/setTime', formData);
+  }
+
+  newViewer() {
+    return this.http.get(API_URL + '/newViewer');
+  }
+
 }

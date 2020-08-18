@@ -1,8 +1,8 @@
-<h2 class="text-center my-3">Dashboard </h2>
+<h2 class="text-center my-3">{{'dashboard'  | translate}}</h2>
 <div class="container">
   <div class="row">
     <div class="col-sm">
-      <button type="button" class="btn btn-primary browseBtn"
+      <button type="button" class="btn btn-primary browseBtn" [disabled]="!enabled"
               (click)="goToUserPage()">{{'newCode' | translate}}</button>
     </div>
     <!--<div class="col-sm">
@@ -13,21 +13,41 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">QR</div>
-        <div class="card-body">
-          <h5 class="card-title" style="font-weight: bold">You can manage your codes here </h5>
+        <div class="card-body" *ngIf="enabled">
+          <h5 class="card-title" style="font-weight: bold">{{'manageQrCode' | translate}}</h5>
           <div class="row">
             <div class="card col-auto" style="width: 18rem; margin: 10px" *ngFor="let code of codes">
               <img class="card-img-top" [src]="'data:image/jpeg;base64,' + code.file">
               <div class="card-body">
-                <h5 class="card-title">Name of QR : {{code.qrCode.name}}</h5>
-                <p class="card-text"> Snan time : </p>
-                <p class="card-text"> AVG time : </p>
-                <button type="button" class="btn btn-info btnMargin1" (click)="open(mymodal, code)">Open</button>
-                <button type="button" class="btn btn-warning btnMargin1" (click)="edit(code)">Edit</button>
-                <button type="button" class="btn btn-danger" (click)="delete(code)">Delete</button>
+                <h5 class="card-title">{{'fileName'  | translate}}  {{code.qrCode.name}}</h5>
+                <p class="card-text"> {{'scan'  | translate}} {{code.qrCode.scannedTime}}</p>
+                <p class="card-text"> {{'avg'  | translate}} {{averageTime(code)}} {{'min'  | translate}}</p>
+                <p class="card-text"> {{'best'  | translate}}
+                  <span *ngFor="let day of best10Days(code); let i=index"><br>
+                    <span *ngIf="i<10">
+                      - {{day[0]}} : 00
+                    </span>
+                  </span>
+                </p>
+                <p class="card-text"> {{'lessThan1Min'  | translate}} {{lessThan1Min(code)}}</p>
+                <div class="row">
+                  <button type="button" class="btn btn-info btnMargin1" (click)="open(mymodal, code)">{{'open'  | translate}}</button>
+                  <button type="button" class="btn btn-warning btnMargin1" (click)="edit(code)">{{'edit'  | translate}}</button>
+                  <button type="button" class="btn btn-danger btnMargin1" (click)="delete(code)">{{'delete'  | translate}}</button>
+                  <button type="button" class="btn btn-secondary downloadBtn" (click)="download(code)">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-download btnMargin1" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M.5 8a.5.5 0 0 1 .5.5V12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8.5a.5.5 0 0 1 1 0V12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V8.5A.5.5 0 0 1 .5 8z"/>
+                      <path fill-rule="evenodd" d="M5 7.5a.5.5 0 0 1 .707 0L8 9.793 10.293 7.5a.5.5 0 1 1 .707.707l-2.646 2.647a.5.5 0 0 1-.708 0L5 8.207A.5.5 0 0 1 5 7.5z"/>
+                      <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0v-8A.5.5 0 0 1 8 1z"/>
+                    </svg>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
+        </div>
+        <div *ngIf="!enabled">
+          <div class="col d-flex justify-content-center divClass"><p class="textStyle">{{'suspend'  | translate}}</p></div>
         </div>
       </div>
     </div>
@@ -65,7 +85,7 @@
 
 <ng-template #mymodal let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Menu</h4>
+    <h4 class="modal-title" id="modal-basic-title">{{'menu'  | translate}}</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">×</span>
     </button>

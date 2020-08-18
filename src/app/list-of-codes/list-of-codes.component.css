@@ -29,3 +29,18 @@ body {
 .btnMargin1 {
   margin-right: 5px;
 }
+
+.divClass {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.downloadBtn {
+  width: 41px;
+}
+
+.textStyle {
+  border: 2px solid red;
+  background: coral;
+  padding: 5px;
+}
