@@ -58,7 +58,6 @@ export class GetCodeComponent implements OnInit, OnDestroy {
     if (this.qrCodeId) {
       this.getCode();
     }
-    this.cron();
   }
 
   cron() {
@@ -90,6 +89,7 @@ export class GetCodeComponent implements OnInit, OnDestroy {
       this.code = data;
       this.viewerStartDate = this.code.viewer.startDate;
       this.viewerId = this.code.viewer.id;
+      this.cron();
     });
   }
 
