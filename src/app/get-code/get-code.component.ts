@@ -68,7 +68,10 @@ export class GetCodeComponent implements OnInit, OnDestroy {
       }
       pollCount++;
       if (pollCount % 5 === 0) {
-        if (new Date().getTime() - Date.parse(this.viewerStartDate )  < 50 * 60 * 1000) {
+        const lastDateStr = this.viewerStartDate;
+        const dateArr = lastDateStr.split(/[^0-9]/);
+        const lastDate = new Date(dateArr[0], dateArr[1] - 1, dateArr[2], dateArr[3], dateArr[4] , dateArr[5]);
+        if (new Date().getTime() - lastDate.getTime()  < 50 * 60 * 1000) {
           this.boardUser.setViewedTime(this.qrCodeId, pollCount, this.viewerId).subscribe((data) => {
           });
         } else if (new Date().getTime() - Date.parse(this.code.viewer.startDate) >= 50 * 60 * 100) {
