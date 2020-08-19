@@ -5,6 +5,7 @@ import {FormBuilder} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
 import {ToastrService} from 'ngx-toastr';
 import {ActivatedRoute, Router} from '@angular/router';
+import * as moment from 'moment';
 import {take} from 'rxjs/operators';
 import {timer} from 'rxjs';
 
@@ -68,13 +69,13 @@ export class GetCodeComponent implements OnInit, OnDestroy {
       }
       pollCount++;
       if (pollCount % 5 === 0) {
-        const lastDateStr = this.viewerStartDate;
-        const dateArr = lastDateStr.split(/[^0-9]/);
-        const lastDate = new Date(dateArr[0], dateArr[1] - 1, dateArr[2], dateArr[3], dateArr[4] , dateArr[5]);
-        if (new Date().getTime() - lastDate.getTime()  < 50 * 60 * 1000) {
+        const date = moment(this.viewerStartDate);
+        const dateStart = moment(this.code.viewer.startDate);
+        const now = moment();
+        if (now.unix() - date.unix()  < 50 * 60 * 1000) {
           this.boardUser.setViewedTime(this.qrCodeId, pollCount, this.viewerId).subscribe((data) => {
           });
-        } else if (new Date().getTime() - Date.parse(this.code.viewer.startDate) >= 50 * 60 * 100) {
+        } else if (now.unix() - dateStart.unix() >= 50 * 60 * 100) {
           this.boardUser.newViewer().subscribe((data) => {
             this.newViewer = data;
             this.viewerStartDate = this.newViewer.startDate;
