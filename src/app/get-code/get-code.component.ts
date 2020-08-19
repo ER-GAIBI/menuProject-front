@@ -67,6 +67,32 @@ export class GetCodeComponent implements OnInit, OnDestroy {
         return;
       }
       pollCount++;
+      if (pollCount < 12) {
+        if (pollCount % 5 === 0) {
+          if (new Date().getTime() - Date.parse(this.viewerStartDate )  < 50 * 60 * 1000) {
+            this.boardUser.setViewedTime(this.qrCodeId, pollCount, this.viewerId).subscribe((data) => {
+            });
+          } else if (new Date().getTime() - Date.parse(this.code.viewer.startDate) >= 50 * 60 * 100) {
+            this.boardUser.newViewer().subscribe((data) => {
+              this.newViewer = data;
+              this.viewerStartDate = this.newViewer.startDate;
+              this.viewerId = this.newViewer.id;
+              pollCount = 0;
+            });
+          }
+        }
+      }
+    };
+    setInterval(poll, 1000);
+  }
+
+  /*cron() {
+    let pollCount = 1;
+    const poll = () => {
+      if (document.hidden) {
+        return;
+      }
+      pollCount++;
       if (pollCount % 5 === 0) {
         if (new Date().getTime() - Date.parse(this.viewerStartDate )  < 50 * 60 * 1000) {
           this.boardUser.setViewedTime(this.qrCodeId, pollCount, this.viewerId).subscribe((data) => {
@@ -82,7 +108,7 @@ export class GetCodeComponent implements OnInit, OnDestroy {
       }
     };
     setInterval(poll, 1000);
-  }
+  }*/
 
   getCode() {
     this.boardUser.getCodeForScan(this.qrCodeId).subscribe((data) => {
