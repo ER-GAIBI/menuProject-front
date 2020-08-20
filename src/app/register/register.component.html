@@ -80,13 +80,13 @@
   </ul>
 </div-->
 
-<div class="limiter">
+<div class="limiter font">
   <div class="container-login100">
     <div class="login100-more" style="background-image: url('../../assets/bg-01.png');"></div>
 
     <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
-      <form class="login100-form validate-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-					<span class="login100-form-title p-b-59">
+      <form class="login100-form validate-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()" [ngClass]="'direction' | translate">
+					<span class="login100-form-title p-b-59" [ngClass]="'direction' | translate">
 						{{'signUp' | translate}}
 					</span>
 
@@ -158,7 +158,7 @@
           </div>
         </div>
 
-        <div class="flex-m w-full p-b-33">
+        <div class="flex-m w-full p-b-33" [ngClass]="'directionL' | translate" >
           <div class="contact100-form-checkbox">
             <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
             <label class="label-checkbox100" for="ckb1">

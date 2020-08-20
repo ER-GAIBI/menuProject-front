@@ -110,11 +110,17 @@ export class BoardAdminComponent implements OnInit {
     let avg = 0;
     code.qrCode.viewer.forEach(c => avg = avg + c.viewingTime);
     if (code.qrCode.scannedTime !== 0) {
-      const result = avg / 60
-      return result / code.qrCode.scannedTime;
+      const result = avg / 60;
+      const lastResult = result / code.qrCode.scannedTime;
+      const str = lastResult.toString();
+      const returnedValue = str.substring(0, 6);
+      return  parseFloat(returnedValue); // convert it to a number
     }
     return 0;
   }
+
+
+
 
   lessThan1Min(code: any) {
     let lessThan1MinCounter = 0;

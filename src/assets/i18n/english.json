@@ -1,5 +1,6 @@
 {
   "Username": "Username",
+  "directionL": "directionLtr",
   "password": "password",
   "login": "Login",
   "logout": "Logout",

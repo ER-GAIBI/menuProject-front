@@ -14,7 +14,8 @@ export class AppComponent implements OnInit {
   showAdminBoard = false;
   showModeratorBoard = false;
   username: string;
-  showMenu: any
+  showMenu: any;
+  logoutBtn: any;
 
   constructor(private tokenStorageService: TokenStorageService,
               public translate: TranslateService,
@@ -24,6 +25,7 @@ export class AppComponent implements OnInit {
     router.events.forEach((event) => {
       if (event instanceof NavigationStart) {
         this.showMenu = event.url.includes('/getCode?id');
+        this.logoutBtn = event.url.includes('/register') || event.url.includes('/login');
       }
     });
   }

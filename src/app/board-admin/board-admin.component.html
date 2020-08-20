@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container font">
   <div class="row">
     <div class="col-sm">
       <button type="button" class="btn btn-primary browseBtn" (click)="manageAccount()" *ngIf="!manage">{{'manageAccount' | translate}}</button>
@@ -15,21 +15,21 @@
             <option class="option" *ngFor="let user of users" [value]="user.id">{{user.email}}</option>
           </select>
           <div class="card-body">
-            <div class="row">
+            <div class="row" [ngClass]="'directionL' | translate">
               <div class="card col-auto" style="width: 18rem; margin: 10px" *ngFor="let code of codes">
                 <img class="card-img-top" [src]="'data:image/jpeg;base64,' + code.file">
                 <div class="card-body">
-                  <h5 class="card-title">{{'fileName'  | translate}}  {{code.qrCode.name}}</h5>
-                  <p class="card-text"> {{'scan'  | translate}} {{code.qrCode.scannedTime}}</p>
-                  <p class="card-text"> {{'avg'  | translate}} {{averageTime(code)}} {{'min'  | translate}}</p>
-                  <p class="card-text"> {{'best'  | translate}}
+                  <h5 class="card-title" [ngClass]="'direction' | translate"><b>{{'fileName'  | translate}}</b>  {{code.qrCode.name}}</h5>
+                  <p class="card-text" [ngClass]="'direction' | translate" > <b>{{'scan'  | translate}}</b> {{code.qrCode.scannedTime}}</p>
+                  <p class="card-text" [ngClass]="'direction' | translate"> <b>{{'avg'  | translate}}</b> {{averageTime(code)}} {{'min'  | translate}}</p>
+                  <p class="card-text" [ngClass]="'direction' | translate"> <b>{{'best'  | translate}}</b>
                     <span *ngFor="let day of best10Days(code); let i=index"><br>
                       <span *ngIf="i<10">
                       - {{day[0]}} : 00
                     </span>
                   </span>
                   </p>
-                  <p class="card-text"> {{'lessThan1Min'  | translate}} {{lessThan1Min(code)}}</p>
+                  <p class="card-text" [ngClass]="'direction' | translate"> <b>{{'lessThan1Min'  | translate}}</b> {{lessThan1Min(code)}}</p>
                 </div>
               </div>
             </div>

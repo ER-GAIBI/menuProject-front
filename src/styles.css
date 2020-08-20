@@ -8,6 +8,18 @@
   font-family: 'Scheherazade', serif;
 }
 
+.font {
+  font-family: 'Cairo', sans-serif;
+}
+
+.directionRtl {
+  direction: rtl;
+}
+
+.directionLtr {
+  direction: ltr;
+}
+
 /* position */
 .toast-center-center {
   top: 50%;

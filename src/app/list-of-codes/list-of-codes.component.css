@@ -12,6 +12,10 @@ body {
   min-height: 100%;
 }
 */
+.font {
+  font-family: 'Cairo', sans-serif;
+}
+
 
 
 .browseBtn {

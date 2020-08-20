@@ -42,20 +42,20 @@
   </ul>
 </div>-->
 
-<div class="limiter">
+<div class="limiter font">
   <div class="container-login100">
     <div class="login100-more" style="background-image: url('../../assets/bg-01.png');"></div>
 
     <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
-      <form class="login100-form validate-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-					<span class="login100-form-title p-b-59">
+      <form class="login100-form validate-form" [ngClass]="'direction' | translate" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+					<span class="login100-form-title p-b-59" [ngClass]="'direction' | translate">
 						{{'login' | translate}}
 					</span>
 
         <div class="wrap-input100 validate-input form-group">
           <span class="label-input100">{{'Username' | translate}}</span>
-          <input class="input100" type="text" name="name" [placeholder]="'Username' | translate" formControlName="username"
-                 [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+          <input class="input100" type="text" name="name" [placeholder]="['Username' | translate]" formControlName="username"
+                 [ngClass]="{ 'is-invalid': submitted && f.username.errors}">
           <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
             <div *ngIf="f.username.errors.required">{{'userNameIsRequired' | translate}}</div>
           </div>
@@ -76,6 +76,11 @@
             <div class="login100-form-bgbtn"></div>
             <button class="login100-form-btn" type="submit">{{'login' | translate}}</button>
           </div>
+
+          <a  (click)="register()" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30 cursorBtn">
+            {{'signUp' | translate}}
+            <i class="fa fa-long-arrow-right m-l-5"></i>
+          </a>
         </div>
       </form>
     </div>
