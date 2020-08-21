@@ -3,6 +3,7 @@ import {BoardAdminService} from '../_services/board-admin.service';
 import {TranslateService} from "@ngx-translate/core";
 import {ToastrService} from "ngx-toastr";
 import {ListOfCodesService} from "../_services/list-of-codes.service";
+import * as moment from "moment";
 
 @Component({
   selector: 'app-board-admin',
@@ -89,9 +90,9 @@ export class BoardAdminComponent implements OnInit {
       scannedHours.push(c.startDate);
     });
     scannedHours.forEach(scannedHour => {
-      const date = new Date(scannedHour);
-      const dayName = days[date.getDay()];
-      const hour = date.getHours();
+      const date = moment(scannedHour);
+      const dayName = days[date.day()];
+      const hour = date.hour();
       dateFormat.push(dayName + ' '  + hour);
     });
 
