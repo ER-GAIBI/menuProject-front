@@ -5,6 +5,7 @@ import {ListOfCodesService} from "../_services/list-of-codes.service";
 import {ToastrService} from "ngx-toastr";
 import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {TokenStorageService} from "../_services/token-storage.service";
+import * as moment from "moment";
 
 @Component({
   selector: 'app-list-of-codes',
@@ -51,9 +52,9 @@ export class ListOfCodesComponent implements OnInit {
       scannedHours.push(c.startDate);
     });
     scannedHours.forEach(scannedHour => {
-      const date = new Date(scannedHour);
-      const dayName = days[date.getDay()];
-      const hour = date.getHours();
+      const date = moment(scannedHour);
+      const dayName = days[date.day()];
+      const hour = date.hour();
       dateFormat.push(dayName + ' '  + hour);
     });
 
