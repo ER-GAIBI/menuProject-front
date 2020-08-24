@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
   username: string;
   showMenu: any;
   logoutBtn: any;
+  profileBtn: any;
 
   constructor(private tokenStorageService: TokenStorageService,
               public translate: TranslateService,
@@ -55,6 +56,10 @@ export class AppComponent implements OnInit {
     this.tokenStorageService.signOut();
     this.router.navigateByUrl('/login');
     /*window.location.reload();*/
+  }
+
+  profile() {
+    this.router.navigateByUrl('/profile');
   }
 
   goToCodes() {

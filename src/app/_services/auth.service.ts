@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const AUTH_API = 'http://46.101.151.85:8080/api/auth/';
+const AUTH_API = 'http://localhost:8080/api/auth/';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -31,6 +31,14 @@ export class AuthService {
       commercialRegistrationNo: user.commercialRegistrationNo,
       phone: user.phone,
     }, httpOptions);
+  }
+
+  chnagePassword(pass: any, userId: string): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('password', pass.password);
+    formData.append('newPassword', pass.newPassword);
+    formData.append('id', userId);
+    return this.http.post(AUTH_API + 'changePassword', formData);
   }
 
   confirmRegister(token: string): Observable<any> {

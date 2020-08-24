@@ -1,15 +1,10 @@
-<div class="container" *ngIf="currentUser; else loggedOut">
-  <header class="jumbotron">
+<div class="container">
+  <!--<header class="jumbotron">
     <h3>
       <strong>{{ currentUser.username }}</strong> Profile
     </h3>
-  </header>
-  <p>
-    <strong>Token:</strong>
-    {{ currentUser.accessToken.substring(0, 20) }} ...
-    {{ currentUser.accessToken.substr(currentUser.accessToken.length - 20) }}
-  </p>
-  <p>
+  </header>-->
+  <!--<p>
     <strong>Email:</strong>
     {{ currentUser.email }}
   </p>
@@ -18,9 +13,52 @@
     <li *ngFor="let role of currentUser.roles">
       {{ role }}
     </li>
-  </ul>
+  </ul>-->
+  <div class="card">
+    <div class="card-header" [ngClass]="'direction' | translate">{{'changePass' | translate}}</div>
+    <div class="card-body">
+      <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
+        <form class="login100-form validate-form" [formGroup]="changePassForm" (ngSubmit)="onSubmit()"
+              [ngClass]="['direction' | translate, 'directionL' | translate]">
+
+          <div class="row mt-3" >
+            <span class="col-sm-2 col-form-label">{{'password' | translate}}</span>
+            <input class="col-sm-5" type="password" formControlName="password" placeholder="*************"
+                   [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback col-sm-5">
+              <div *ngIf="f.password.errors.required">{{'passwordIsRequired' | translate}}</div>
+              <div *ngIf="f.password.errors.minlength">{{'passwordLenght' | translate}}</div>
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <span class="col-sm-2 col-form-label">{{'newPassword' | translate}}</span>
+            <input class="col-sm-5" type="password" formControlName="newPassword" placeholder="*************"
+                   [ngClass]="{ 'is-invalid': submitted && f.newPassword.errors }">
+            <div *ngIf="submitted && f.newPassword.errors" class="invalid-feedback col-sm-5">
+              <div *ngIf="f.newPassword.errors.required">{{'passwordIsRequired' | translate}}</div>
+              <div *ngIf="f.newPassword.errors.minlength">{{'passwordLenght' | translate}}</div>
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <span class="col-sm-2 col-form-label">{{'confirmPassword' | translate}}</span>
+            <input class="col-sm-5" type="password" formControlName="confirmNewPassword" placeholder="*************"
+                   [ngClass]="{ 'is-invalid': submitted && f.confirmNewPassword.errors }">
+            <div *ngIf="submitted && f.confirmNewPassword.errors" class="invalid-feedback col-sm-5">
+              <div *ngIf="f.confirmNewPassword.errors.required">{{'passwordIsRequired' | translate}}</div>
+              <div *ngIf="f.confirmNewPassword.errors.minlength">{{'passwordLenght' | translate}}</div>
+              <div *ngIf="f.confirmNewPassword.errors.confirmedValidator">{{'passwordDoesNotMuch' | translate}}</div>
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <button class="btn btn-primary col-form-label" type="submit">{{'changePass' | translate}}</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
 
-<ng-template #loggedOut>
-  Please login.
-</ng-template>

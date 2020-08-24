@@ -64,5 +64,10 @@
   "suspend": "Your account is suspended, please contact customer support.",
   "phoneIsRequired": "Phone is required",
   "manageAccount": "Manage accounts",
-  "main": "Main"
+  "main": "Main",
+  "profile": "Settings",
+  "newPassword": "New password",
+  "changePass": "Change password",
+  "changePassSuccess": "Password changed",
+  "changePassFailed": "Password does not match"
 }

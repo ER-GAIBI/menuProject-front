@@ -29,6 +29,8 @@
           {{ language }}
         </option>
       </select>
+      <button class="btn my-2 my-sm-0 btnMargin"
+              *ngIf="!logoutBtn" type="submit" (click)="profile()">{{'profile' | translate}}</button>
     </form>
   </div>
 </nav>

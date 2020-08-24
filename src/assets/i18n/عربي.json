@@ -66,5 +66,10 @@
   "suspend": "تم تعليق حسابك ، يرجى الاتصال بخدمة دعم العملاء",
   "phoneIsRequired": "الهاتف مطلوب",
   "manageAccount": "إدارة الحسابات",
-  "main": "الرئيسية"
+  "main": "الرئيسية",
+  "profile": "الإعدادات",
+  "newPassword": "كلمة المرور الجديدة",
+  "changePass": "تغيير كلمة المرور",
+  "changePassSuccess": "تم تغيير كلمة المرور",
+  "changePassFailed": "كلمة المرور غير متطابقة"
 }
