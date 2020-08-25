@@ -17,8 +17,8 @@
   <div class="card">
     <div class="card-header" [ngClass]="'direction' | translate">{{'changePass' | translate}}</div>
     <div class="card-body">
-      <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
-        <form class="login100-form validate-form" [formGroup]="changePassForm" (ngSubmit)="onSubmit()"
+      <div>
+        <form [formGroup]="changePassForm" (ngSubmit)="onSubmit()"
               [ngClass]="['direction' | translate, 'directionL' | translate]">
 
           <div class="row mt-3" >

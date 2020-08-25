@@ -17,3 +17,11 @@
   line-height: 1.2;
 }
 */
+
+input {
+  border: black solid 1px;
+}
+
+.card {
+  margin-top: 20px;
+}

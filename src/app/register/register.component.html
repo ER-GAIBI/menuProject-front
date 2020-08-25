@@ -151,7 +151,7 @@
 
         <div class="wrap-input100 validate-input">
           <span class="label-input100">{{'commercialRegistrationNo' | translate}}</span>
-          <input class="input100" type="text" formControlName="commercialRegistrationNo" name="commercialRegistrationNo"
+          <input class="input100" type="number" formControlName="commercialRegistrationNo" name="commercialRegistrationNo"
                  [placeholder]="'commercialRegistrationNo' | translate" [ngClass]="{ 'is-invalid': submitted && f.commercialRegistrationNo.errors }">
           <div *ngIf="submitted && f.commercialRegistrationNo.errors" class="invalid-feedback">
             <div *ngIf="f.commercialRegistrationNo.errors.required">{{'commercialRegistrationIsRequired' | translate}}</div>

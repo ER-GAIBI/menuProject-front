@@ -111,6 +111,15 @@ export class ListOfCodesComponent implements OnInit {
     a.remove();
   }
 
+  print(code: any) {
+    const WindowPrt = window.open('', '', 'left=0,top=0,width=900,height=900,toolbar=0,scrollbars=0,status=0');
+    WindowPrt.document.open();
+    WindowPrt.document.write('<img src="data:image/jpeg;base64,' + code.file + '"/>');
+    WindowPrt.document.close();
+    WindowPrt.focus();
+    WindowPrt.print();
+  }
+
   edit(code: any) {
     this.router.navigate(['/user', {id: code.qrCode.id}]);
   }

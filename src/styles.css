@@ -2,7 +2,6 @@
 /* based on angular-toastr css https://github.com/Foxandxss/angular-toastr/blob/cb508fe6801d6b288d3afc525bb40fee1b101650/dist/angular-toastr.css */
 
 @import "~bootstrap/dist/css/bootstrap.css";
-@import url(https://fonts.googleapis.com/earlyaccess/scheherazade.css);
 
 .Scheherazade {
   font-family: 'Scheherazade', serif;
