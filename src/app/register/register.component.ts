@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
       confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
       companyName: ['', Validators.required],
       phone: ['', Validators.required],
-      commercialRegistrationNo: ['', Validators.required]
+      commercialRegistrationNo: ['', [Validators.required, Validators.pattern('^[0-9]*$')]]
     }, {validator: this.passwordConfirming('password', 'confirmPassword')});
   }
 

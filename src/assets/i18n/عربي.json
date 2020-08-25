@@ -71,5 +71,6 @@
   "newPassword": "كلمة المرور الجديدة",
   "changePass": "تغيير كلمة المرور",
   "changePassSuccess": "تم تغيير كلمة المرور",
-  "changePassFailed": "كلمة المرور غير متطابقة"
+  "changePassFailed": "كلمة المرور غير متطابقة",
+  "onlyNumber": "يقبل السجل التجاري الأرقام فقط"
 }

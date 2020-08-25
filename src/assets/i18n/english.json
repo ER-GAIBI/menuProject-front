@@ -69,5 +69,6 @@
   "newPassword": "New password",
   "changePass": "Change password",
   "changePassSuccess": "Password changed",
-  "changePassFailed": "Password does not match"
+  "changePassFailed": "Password does not match",
+  "onlyNumber": "CR accepts only numbers"
 }
