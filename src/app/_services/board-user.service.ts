@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
-const API_URL = 'http://www.qmenusa.com:8080/api/user';
+const API_URL = 'http://qmenusa.com:8080/api/user';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };

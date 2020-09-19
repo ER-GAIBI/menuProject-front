@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from "rxjs";
 
-const API_URL = 'http://www.qmenusa.com:8080/api/admin';
+const API_URL = 'http://qmenusa.com:8080/api/admin';
 
 @Injectable({
   providedIn: 'root'
